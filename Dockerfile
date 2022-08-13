@@ -29,7 +29,8 @@ RUN groupadd -g $LSDC2_GID -o valheim \
     && useradd -g $LSDC2_GID -u $LSDC2_UID -o --create-home valheim \
     && chmod u+x /serverwrap \
     && chown valheim:valheim $VALHEIM_HOME \
-    && ./update-server.sh
+    && ./update-server.sh \
+    && rm -rf /root/.steam
 
 EXPOSE 2456-2457/udp
 ENTRYPOINT ["/serverwrap"]
