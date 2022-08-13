@@ -26,7 +26,7 @@ ADD https://github.com/Meuna/lsdc2-serverwrap/releases/download/v0.1.0/serverwra
 
 COPY *.sh $VALHEIM_HOME
 RUN groupadd -g $LSDC2_GID -o valheim \
-    && useradd -g $LSDC2_GID -u $LSDC2_UID -o --create-home valheim \
+    && useradd -g $LSDC2_GID -u $LSDC2_UID -o --no-create-home valheim \
     && chmod u+x /serverwrap \
     && chown valheim:valheim $VALHEIM_HOME \
     && ./update-server.sh \
