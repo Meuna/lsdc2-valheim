@@ -5,11 +5,11 @@ ENV VALHEIM_SERVER_APPID=896660 \
     VALHEIM_HOME=/valheim/
 
 ENV SAVEDIR=$VALHEIM_HOME/savedir \
-    WORLD_NAME=${WORLD_NAME:-lsdc2} \
-    SERVER_NAME=${SERVER_NAME:-"Le serveur des copains"} \
-    SERVER_PORT=${SERVER_PORT:-2456} \
-    SERVER_PASS=${SERVER_PASS:-valheim} \
-    SERVER_PUBLIC=${SERVER_PUBLIC:-0}
+    WORLD_NAME=lsdc2 \
+    SERVER_NAME="Le serveur des copains" \
+    SERVER_PORT=2456 \
+    SERVER_PASS=valheim \
+    SERVER_PUBLIC=0
 
 ENV LSDC2_SNIFF_IFACE="eth0" \
     LSDC2_SNIFF_FILTER="udp port $SERVER_PORT" \
@@ -29,7 +29,7 @@ RUN groupadd -g $LSDC2_GID -o valheim \
     && useradd -g $LSDC2_GID -u $LSDC2_UID -o --no-create-home valheim \
     && chmod u+x /serverwrap \
     && chown valheim:valheim $VALHEIM_HOME \
-    && ./update-server.sh \
+    && su - valheim ./update-server.sh \
     && rm -rf /root/.steam
 
 EXPOSE 2456-2457/udp
