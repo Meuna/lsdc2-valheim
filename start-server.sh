@@ -1,5 +1,5 @@
 #!/bin/bash
-export HOME=/tmp
+export HOME=$VALHEIM_HOME
 export LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH
 export SteamAppId=$VALHEIM_APPID
 
