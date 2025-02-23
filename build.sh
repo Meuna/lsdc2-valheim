@@ -1,3 +1,3 @@
 #!/bin/bash
-sudo docker build . -t meuna/lsdc2:valheim
-sudo docker push meuna/lsdc2:valheim
+sudo podman build . -t docker.io/meuna/lsdc2:valheim --format docker
+sudo docker push docker.io/meuna/lsdc2:valheim

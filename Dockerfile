@@ -1,4 +1,4 @@
-from steamcmd/steamcmd:ubuntu
+FROM steamcmd/steamcmd:ubuntu
 
 ENV VALHEIM_SERVER_APPID=896660 \
     VALHEIM_APPID=892970 \
