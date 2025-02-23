@@ -1,8 +1,8 @@
 {
     "key": "valheim",
     "image": "meuna/lsdc2:valheim",
-    "cpu": "2 vCPU",
-    "memory": "4 GB",
+    "cpu": "4 vCPU",
+    "memory": "8 GB",
     "portMap": {
         "2456": "udp",
         "2457": "udp"
