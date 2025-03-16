@@ -32,6 +32,5 @@ RUN groupadd -g $LSDC2_GID -o valheim \
     && su valheim ./update-server.sh \
     && rm -rf /root/.steam
 
-EXPOSE 2456-2457/udp
 ENTRYPOINT ["/serverwrap"]
 CMD ["./start-server.sh"]
