@@ -8,14 +8,14 @@ ENV SAVEDIR=$VALHEIM_HOME/savedir \
     WORLD_NAME=lsdc2 \
     SERVER_NAME="Le serveur des copains" \
     SERVER_PORT=2456 \
-    SERVER_PASS=valheim \
+    SERVER_PASS=password \
     SERVER_PUBLIC=0
 
 ENV LSDC2_SNIFF_IFACE="eth0" \
     LSDC2_SNIFF_FILTER="udp port $SERVER_PORT" \
     LSDC2_CWD=$VALHEIM_HOME \
-    LSDC2_UID=1000 \
-    LSDC2_GID=1000 \
+    LSDC2_UID=2000 \
+    LSDC2_GID=2000 \
     LSDC2_PERSIST_FILES="$WORLD_NAME.db;$WORLD_NAME.fwl" \
     LSDC2_ZIP=1 \
     LSDC2_ZIPFROM=$SAVEDIR/worlds_local
