@@ -1,3 +1,4 @@
 #!/bin/bash
-export HOME=$VALHEIM_HOME
-steamcmd +force_install_dir $VALHEIM_HOME +login anonymous +app_update $VALHEIM_SERVER_APPID +quit
+export HOME=$LSDC2_HOME
+valheim_server_appid=896660
+steamcmd +force_install_dir $LSDC2_HOME +login anonymous +app_update $valheim_server_appid +quit
