@@ -15,7 +15,7 @@ RUN groupadd -g $LSDC2_GID -o $LSDC2_USER \
     && su $LSDC2_USER ./update-server.sh \
     && rm -rf /root/.steam
 
-ADD https://github.com/Meuna/lsdc2-serverwrap/releases/download/v0.3.1/serverwrap $LSDC2_HOME/serverwrap
+ADD https://github.com/Meuna/lsdc2-serverwrap/releases/download/v0.3.2/serverwrap $LSDC2_HOME/serverwrap
 COPY start-server.sh $LSDC2_HOME
 RUN chown $LSDC2_USER:$LSDC2_USER start-server.sh \
     && chmod +x serverwrap start-server.sh
