@@ -1,8 +1,11 @@
 {
-    "key": "valheim",
-    "image": "meuna/lsdc2:valheim",
-    "cpu": "4 vCPU",
-    "memory": "8 GB",
+    "name": "valheim",
+    "engineType": "ecs",
+    "engine": {
+        "image": "meuna/lsdc2:valheim",
+        "cpu": "4 vCPU",
+        "memory": "8 GB"
+    },
     "portMap": {
         "2456": "udp",
         "2457": "udp"
