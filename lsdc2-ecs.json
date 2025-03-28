@@ -1,0 +1,21 @@
+{
+    "name": "valheim-ecs",
+    "engineType": "ecs",
+    "engine": {
+        "image": "meuna/lsdc2:valheim",
+        "cpu": "2 vCPU",
+        "memory": "8 GB"
+    },
+    "portMap": {
+        "2456": "udp",
+        "2457": "udp"
+    },
+    "envMap": {
+        "LSDC2_SNIFF_IFACE": "eth1",
+        "LSDC2_SCAN_STDOUT": "true",
+        "LSDC2_WAKEUP_SENTINEL": "Game server connected"
+    },
+    "envParamMap": {
+        "SERVER_PASS": "Password"
+    }
+}
