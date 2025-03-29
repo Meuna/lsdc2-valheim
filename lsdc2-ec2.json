@@ -3,7 +3,10 @@
     "engineType": "ec2",
     "engine": {
         "ami": "lsdc2/images/valheim",
-        "instanceType": "m6a.large"
+        "instanceType": "m6a.large",
+        "iops": 4000,
+        "throughput": 400,
+        "fastboot": true
     },
     "portMap": {
         "2456": "udp",

@@ -12,7 +12,7 @@ locals {
   lsdc2-home           = "/lsdc2"
   lsdc2-gid            = 2000
   lsdc2-uid            = 2000
-  lsdc2-serverwrap-url = "https://github.com/Meuna/lsdc2-serverwrap/releases/download/v0.4.2/serverwrap"
+  lsdc2-serverwrap-url = "https://github.com/Meuna/lsdc2-serverwrap/releases/download/v0.4.4/serverwrap"
   lsdc2-service        = "lsdc2.service"
   game-savedir         = "/lsdc2/savedir"
   game-savename        = "lsdc2"
@@ -22,7 +22,14 @@ locals {
 # Source image
 source "amazon-ebs" "ubuntu-noble-latest" {
   ami_name      = "lsdc2/images/valheim"
-  instance_type = "t2.micro"
+  instance_type = "m6a.large"
+  launch_block_device_mappings {
+    device_name           = "/dev/sda1"
+    volume_type           = "gp3"
+    throughput            = 400
+    iops                  = 4000
+    delete_on_termination = true
+  }
   source_ami_filter {
     filters = {
       name                = "ubuntu/images/*ubuntu-noble*24.04*"
