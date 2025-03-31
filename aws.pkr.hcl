@@ -8,6 +8,7 @@ packer {
 }
 
 locals {
+  lsdc2-gamename       = "valheim-ec2"
   lsdc2-user           = "lsdc2"
   lsdc2-home           = "/lsdc2"
   lsdc2-gid            = 2000
@@ -21,8 +22,11 @@ locals {
 
 # Source image
 source "amazon-ebs" "ubuntu-noble-latest" {
-  ami_name      = "lsdc2/images/valheim"
+  ami_name      = "lsdc2/images/${local.lsdc2-gamename}"
   instance_type = "m6a.large"
+  tags = {
+    "lsdc2.gamename" = "${local.lsdc2-gamename}"
+  }
   launch_block_device_mappings {
     device_name           = "/dev/sda1"
     volume_type           = "gp3"
@@ -40,14 +44,14 @@ source "amazon-ebs" "ubuntu-noble-latest" {
     most_recent = true
     owners      = ["amazon"]
   }
-  ssh_username = "ubuntu"
-  force_deregister = true
+  ssh_username          = "ubuntu"
+  force_deregister      = true
   force_delete_snapshot = true
 }
 
 # Provisionning
 build {
-  name = "lsdc2/packer/valheim"
+  name = "lsdc2/packer/${local.lsdc2-gamename}"
   sources = [
     "source.amazon-ebs.ubuntu-noble-latest"
   ]
