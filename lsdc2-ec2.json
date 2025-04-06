@@ -3,7 +3,7 @@
     "engineType": "ec2",
     "engine": {
         "ami": "lsdc2/images/valheim",
-        "instanceType": "m6a.large",
+        "instanceTypes": ["m6a.large", "m6i.large", "m7i-flex.large", "m7i.large", "m5.large", "m5a.large"],
         "iops": 4000,
         "throughput": 400,
         "fastboot": true
