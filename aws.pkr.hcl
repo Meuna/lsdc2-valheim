@@ -22,8 +22,9 @@ locals {
 
 # Source image
 source "amazon-ebs" "ubuntu-noble-latest" {
-  ami_name      = "lsdc2/images/${local.lsdc2-gamename}"
-  instance_type = "m6a.large"
+  ami_name            = "lsdc2/images/${local.lsdc2-gamename}"
+  spot_instance_types = ["m6a.large", "m6i.large", "m7i-flex.large", "m7i.large", "m5.large", "m5a.large"]
+  spot_price          = "0.05"
   tags = {
     "lsdc2.gamename" = "${local.lsdc2-gamename}"
   }
@@ -132,6 +133,19 @@ EOF
       "sudo chown root:root ${local.lsdc2-home}/lsdc2.env",
     ]
   }
+
+
+  # Local servwrap for debug purpose
+  #  provisioner "file" {
+  #    source      = "serverwrap"
+  #    destination = "/tmp/"
+  #  }
+  #  provisioner "shell" {
+  #    inline = [
+  #      "sudo mv /tmp/serverwrap /usr/local/bin/serverwrap",
+  #      "sudo chmod +x /usr/local/bin/serverwrap",
+  #    ]
+  #  }
 
   # Clean up
   provisioner "shell" {
