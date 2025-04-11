@@ -13,7 +13,7 @@ locals {
   lsdc2-home           = "/lsdc2"
   lsdc2-gid            = 2000
   lsdc2-uid            = 2000
-  lsdc2-serverwrap-url = "https://github.com/Meuna/lsdc2-serverwrap/releases/download/v0.5.0/serverwrap"
+  lsdc2-serverwrap-url = "https://github.com/Meuna/lsdc2-serverwrap/releases/download/v0.5.1/serverwrap"
   lsdc2-service        = "lsdc2.service"
   game-savedir         = "/lsdc2/savedir"
   game-savename        = "lsdc2"
@@ -112,8 +112,7 @@ LSDC2_USER=${local.lsdc2-user}
 LSDC2_HOME=${local.lsdc2-home}
 LSDC2_UID=${local.lsdc2-uid}
 LSDC2_GID=${local.lsdc2-gid}
-LSDC2_SNIFF_IFACE=ens5
-LSDC2_SNIFF_FILTER="udp port ${local.game-port}"
+LSDC2_SNIFF_FILTER="udp dst port ${local.game-port}"
 LSDC2_CWD=${local.lsdc2-home}
 LSDC2_PERSIST_FILES="${local.game-savename}.db;${local.game-savename}.fwl"
 LSDC2_ZIPFROM=${local.game-savedir}/worlds_local
@@ -134,8 +133,7 @@ EOF
     ]
   }
 
-
-  # Local servwrap for debug purpose
+  # Local serverwrap for debug purpose
   #  provisioner "file" {
   #    source      = "serverwrap"
   #    destination = "/tmp/"
