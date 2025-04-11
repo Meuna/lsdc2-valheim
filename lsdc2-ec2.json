@@ -8,17 +8,16 @@
         "throughput": 400,
         "fastboot": true
     },
-    "portMap": {
-        "2456": "udp",
-        "2457": "udp"
+    "ingress": {
+        "udp": [2456, 2457]
     },
-    "envMap": {
+    "env": {
         "LSDC2_LOW_MEMORY_WARNING_MB": "2048",
         "LSDC2_LOW_MEMORY_SIGNAL_MB": "1024",
         "LSDC2_SCAN_STDOUT": "true",
         "LSDC2_WAKEUP_SENTINEL": "Game server connected"
     },
-    "envParamMap": {
+    "params": {
         "SERVER_PASS": "Password"
     }
 }
