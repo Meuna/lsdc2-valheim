@@ -15,10 +15,10 @@ RUN groupadd -g $LSDC2_GID -o $LSDC2_USER \
     && su $LSDC2_USER ./update-server.sh \
     && rm -rf /root/.steam
 
-ADD https://github.com/Meuna/lsdc2-serverwrap/releases/download/v0.5.1/serverwrap /usr/local/bin
+ADD https://github.com/Meuna/lsdc2-pilot/releases/download/v0.5.2/lsdc2-pilot /usr/local/bin
 COPY start-server.sh $LSDC2_HOME
 RUN chown $LSDC2_USER:$LSDC2_USER start-server.sh \
-    && chmod +x /usr/local/bin/serverwrap start-server.sh
+    && chmod +x /usr/local/bin/lsdc2-pilot start-server.sh
 
 ENV GAME_SAVEDIR=$LSDC2_HOME/savedir \
     GAME_SAVENAME=lsdc2 \
@@ -28,5 +28,5 @@ ENV LSDC2_SNIFF_FILTER="udp dst port $GAME_PORT" \
     LSDC2_PERSIST_FILES="$GAME_SAVENAME.db;$GAME_SAVENAME.fwl" \
     LSDC2_ZIPFROM=$GAME_SAVEDIR/worlds_local
 
-ENTRYPOINT ["serverwrap"]
+ENTRYPOINT ["lsdc2-pilot"]
 CMD ["./start-server.sh"]

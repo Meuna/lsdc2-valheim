@@ -8,16 +8,16 @@ packer {
 }
 
 locals {
-  lsdc2-gamename       = "valheim"
-  lsdc2-user           = "lsdc2"
-  lsdc2-home           = "/lsdc2"
-  lsdc2-gid            = 2000
-  lsdc2-uid            = 2000
-  lsdc2-serverwrap-url = "https://github.com/Meuna/lsdc2-serverwrap/releases/download/v0.5.1/serverwrap"
-  lsdc2-service        = "lsdc2.service"
-  game-savedir         = "/lsdc2/savedir"
-  game-savename        = "lsdc2"
-  game-port            = 2456
+  lsdc2-gamename  = "valheim"
+  lsdc2-user      = "lsdc2"
+  lsdc2-home      = "/lsdc2"
+  lsdc2-gid       = 2000
+  lsdc2-uid       = 2000
+  lsdc2-pilot-url = "https://github.com/Meuna/lsdc2-pilot/releases/download/v0.5.2/lsdc2-pilot"
+  lsdc2-service   = "lsdc2.service"
+  game-savedir    = "/lsdc2/savedir"
+  game-savename   = "lsdc2"
+  game-port       = 2456
 }
 
 # Source image
@@ -97,7 +97,7 @@ After=network.target
 [Service]
 User=root
 EnvironmentFile=${local.lsdc2-home}/lsdc2.env
-ExecStart=serverwrap ${local.lsdc2-home}/start-server.sh
+ExecStart=lsdc2-pilot ${local.lsdc2-home}/start-server.sh
 Restart=no
 
 [Install]
@@ -125,23 +125,23 @@ EOF
 
   provisioner "shell" {
     inline = [
-      "sudo curl -L ${local.lsdc2-serverwrap-url} -o /usr/local/bin/serverwrap",
-      "sudo chmod +x /usr/local/bin/serverwrap",
+      "sudo curl -L ${local.lsdc2-pilot-url} -o /usr/local/bin/lsdc2-pilot",
+      "sudo chmod +x /usr/local/bin/lsdc2-pilot",
       "sudo mv /tmp/${local.lsdc2-service} /etc/systemd/system/${local.lsdc2-service}",
       "sudo mv /tmp/lsdc2.env ${local.lsdc2-home}/lsdc2.env",
       "sudo chown root:root ${local.lsdc2-home}/lsdc2.env",
     ]
   }
 
-  # Local serverwrap for debug purpose
+  # Local lsdc2-pilot for debug purpose
   #  provisioner "file" {
-  #    source      = "serverwrap"
+  #    source      = "lsdc2-pilot"
   #    destination = "/tmp/"
   #  }
   #  provisioner "shell" {
   #    inline = [
-  #      "sudo mv /tmp/serverwrap /usr/local/bin/serverwrap",
-  #      "sudo chmod +x /usr/local/bin/serverwrap",
+  #      "sudo mv /tmp/lsdc2-pilot /usr/local/bin/lsdc2-pilot",
+  #      "sudo chmod +x /usr/local/bin/lsdc2-pilot",
   #    ]
   #  }
 
