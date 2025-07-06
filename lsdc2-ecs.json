@@ -16,6 +16,7 @@
         "LSDC2_WAKEUP_SENTINEL": "Game server connected"
     },
     "params": {
+        "ADMIN_PLATFORMID": "Platform ID of the admin",
         "SERVER_PASS": "Password"
     }
 }

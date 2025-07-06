@@ -5,6 +5,18 @@ export SteamAppId=892970
 
 ./update-server.sh
 
+# Init the adminlist.txt file if $ADMIN_PLATFORMID is provided
+if [ -n "$ADMIN_PLATFORMID" ]; then
+    # Create the serveradmin.xml is it does not exists
+    admin_file=$GAME_SAVEDIR/adminlist.txt
+    if [ ! -f $admin_file ]; then
+        mkdir -p $GAME_SAVEDIR
+    fi
+    if ! grep -Fxq "$ADMIN_PLATFORMID" "$admin_file"; then
+        echo "$ADMIN_PLATFORMID" >> "$admin_file"
+    fi
+fi
+
 SERVER_PASS=${SERVER_PASS:-password}
 
 server_name="Le serveur des copains"
