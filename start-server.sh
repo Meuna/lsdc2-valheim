@@ -19,6 +19,7 @@ if [ -n "$ADMIN_PLATFORMID" ]; then
 fi
 
 SERVER_PASS=${SERVER_PASS:-password}
+SERVER_PRESET=${SERVER_PRESET:-normal}
 
 server_name="Le serveur des copains"
 server_public=0
@@ -29,6 +30,6 @@ shutdown() {
 
 trap shutdown SIGINT SIGTERM
 
-./valheim_server.x86_64 -nographics -batchmode -savedir "$GAME_SAVEDIR" -name "$server_name" -port "$GAME_PORT" -world "$GAME_SAVENAME" -public "$server_public" -password "$SERVER_PASS" &
+./valheim_server.x86_64 -nographics -batchmode -savedir "$GAME_SAVEDIR" -name "$server_name" -port "$GAME_PORT" -world "$GAME_SAVENAME" -public "$server_public" -password "$SERVER_PASS" -preset "$SERVER_PRESET" $SERVER_EXTRA_FLAGS &
 pid=$!
 wait $pid

@@ -19,6 +19,8 @@
     },
     "params": {
         "ADMIN_PLATFORMID": "Platform ID of the admin",
-        "SERVER_PASS": "Password"
+        "SERVER_PASS": "Password",
+        "SERVER_PRESET": "Difficulty preset",
+        "SERVER_EXTRA_FLAGS": "Extra server flags (-modifier raids none)"
     }
 }
